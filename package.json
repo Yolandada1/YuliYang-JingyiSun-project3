@@ -4,31 +4,20 @@
   "description": "Social Media Application",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "cd frontend && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
-    "build": "cd frontend && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "social media",
-    "mern",
-    "react",
-    "node"
-  ],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "concurrently": "^8.2.0",
-    "dotenv": "^16.3.1",
-    "mongodb": "^6.12.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
+    "start": "cd backend && node server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\""
   },
   "engines": {
-    "node": ">=14.0.0"
-  }
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "frontend/node_modules",
+    "backend/node_modules"
+  ]
 }
